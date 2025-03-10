@@ -11,5 +11,8 @@ config_version=5
 [application]
 
 config/name="dead-shoot"
+config/name_localized={
+"zh_CN": "海盗: 致命射击"
+}
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://d3unr1wr7v4bl"
