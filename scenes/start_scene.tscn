@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://cno8k56lsoxmv"]
+
+[ext_resource type="Texture2D" uid="uid://b4oqct0labn0i" path="res://assets/images/Sample.png" id="1_cokmr"]
+
+[node name="StartScene" type="Node2D"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cokmr")
+
+[node name="Title" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -398.0
+offset_top = -168.0
+offset_right = 398.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 102
+text = "PIRATE:
+DEAD SHOOT"
+
+[node name="Menu" type="VBoxContainer" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -272.0
+offset_right = 270.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_next = NodePath("../Quit")
+
+[node name="Solo" type="Button" parent="HUD/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../Quit")
+focus_neighbor_bottom = NodePath("../Multi")
+text = "solo play"
+
+[node name="Multi" type="Button" parent="HUD/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Solo")
+focus_neighbor_bottom = NodePath("../Setting")
+text = "mult play"
+
+[node name="Setting" type="Button" parent="HUD/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Multi")
+focus_neighbor_bottom = NodePath("../../Quit")
+text = "settings"
+
+[node name="Quit" type="Button" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -213.0
+offset_top = 26.0
+offset_right = -32.0
+offset_bottom = 98.0
+grow_horizontal = 0
+focus_neighbor_top = NodePath("../Menu/Setting")
+focus_neighbor_bottom = NodePath("../Menu/Solo")
+text = "quit"

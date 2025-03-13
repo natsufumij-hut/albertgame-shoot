@@ -1,0 +1,39 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d120p7yico7r8"]
+
+[ext_resource type="FontFile" uid="uid://cyhfhfqcs8g0s" path="res://assets/fonts/Kenney Future.ttf" id="1_rb4rf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7o25s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rb4rf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tkca"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dyisv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hshku"]
+
+[resource]
+Button/colors/font_color = Color(0.921569, 0.423529, 0.423529, 0.541176)
+Button/colors/font_focus_color = Color(0.728173, 0.127959, 0.30909, 1)
+Button/colors/font_hover_color = Color(0.729412, 0.129412, 0.309804, 1)
+Button/colors/font_hover_pressed_color = Color(0.921569, 0.423529, 0.423529, 0.541176)
+Button/colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
+Button/colors/font_pressed_color = Color(0.921569, 0.423529, 0.423529, 0.541176)
+Button/colors/icon_disabled_color = Color(0.329412, 0.301961, 0.321569, 0.4)
+Button/constants/icon_max_width = 24
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_rb4rf")
+Button/styles/disabled = SubResource("StyleBoxEmpty_7o25s")
+Button/styles/focus = SubResource("StyleBoxEmpty_rb4rf")
+Button/styles/hover = SubResource("StyleBoxEmpty_5tkca")
+Button/styles/normal = SubResource("StyleBoxEmpty_dyisv")
+Button/styles/pressed = SubResource("StyleBoxEmpty_hshku")
+Label/colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 6
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 2
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_rb4rf")
