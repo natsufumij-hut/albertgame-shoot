@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://doft4ah2mik0u"]
+
+[ext_resource type="FontFile" uid="uid://cyhfhfqcs8g0s" path="res://assets/fonts/Kenney Future.ttf" id="1_trfnn"]
+[ext_resource type="Texture2D" uid="uid://pu0di7ulmamo" path="res://assets/images/kenney_ui-pack/Vector/Green/button_square_depth_flat.svg" id="4_x4baq"]
+[ext_resource type="Texture2D" uid="uid://45bykeq7y2r4" path="res://assets/images/kenney_ui-pack/Vector/Green/button_square_flat.svg" id="5_finla"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trfnn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4baq"]
+texture = ExtResource("4_x4baq")
+texture_margin_left = 4.78784
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 8.61811
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_finla"]
+texture = ExtResource("5_finla")
+texture_margin_left = 7.42115
+texture_margin_top = 4.06966
+texture_margin_right = 5.74541
+texture_margin_bottom = 5.9848
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ljhvi"]
+texture = ExtResource("4_x4baq")
+texture_margin_left = 4.78784
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 8.61811
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mcth7"]
+texture = ExtResource("5_finla")
+texture_margin_left = 7.42115
+texture_margin_top = 4.06966
+texture_margin_right = 5.74541
+texture_margin_bottom = 5.9848
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 0.898039)
+Button/colors/font_hover_color = Color(1, 1, 1, 0.898039)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 0.898039)
+Button/colors/font_outline_color = Color(0, 0, 0, 0)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0.898039)
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_trfnn")
+Button/styles/focus = SubResource("StyleBoxEmpty_trfnn")
+Button/styles/hover = SubResource("StyleBoxTexture_x4baq")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_finla")
+Button/styles/normal = SubResource("StyleBoxTexture_ljhvi")
+Button/styles/pressed = SubResource("StyleBoxTexture_mcth7")

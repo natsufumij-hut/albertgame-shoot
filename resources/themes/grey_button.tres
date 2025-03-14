@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cur0wlwtwwe6"]
+
+[ext_resource type="FontFile" uid="uid://cyhfhfqcs8g0s" path="res://assets/fonts/Kenney Future.ttf" id="1_e3b2v"]
+[ext_resource type="Texture2D" uid="uid://dr2lo2v136rek" path="res://assets/images/kenney_ui-pack/Vector/Grey/button_square_depth_flat.svg" id="2_702lb"]
+[ext_resource type="Texture2D" uid="uid://clt2k3lfrvhhj" path="res://assets/images/kenney_ui-pack/Vector/Grey/button_square_gradient.svg" id="3_r4o5d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3b2v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_702lb"]
+texture = ExtResource("2_702lb")
+texture_margin_left = 4.78784
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 8.61811
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_royqy"]
+texture = ExtResource("3_r4o5d")
+texture_margin_left = 7.42115
+texture_margin_top = 4.06966
+texture_margin_right = 5.74541
+texture_margin_bottom = 5.9848
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ljhvi"]
+texture = ExtResource("2_702lb")
+texture_margin_left = 4.78784
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 8.61811
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mcth7"]
+texture = ExtResource("3_r4o5d")
+texture_margin_left = 7.42115
+texture_margin_top = 4.06966
+texture_margin_right = 5.74541
+texture_margin_bottom = 5.9848
+
+[resource]
+Button/colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
+Button/colors/font_focus_color = Color(0.501961, 0.501961, 0.501961, 1)
+Button/colors/font_hover_color = Color(0.501961, 0.501961, 0.501961, 0.819608)
+Button/colors/font_hover_pressed_color = Color(0.501961, 0.501961, 0.501961, 0.819608)
+Button/colors/font_outline_color = Color(0, 0, 0, 0)
+Button/colors/font_pressed_color = Color(0.501961, 0.501961, 0.501961, 0.819608)
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_e3b2v")
+Button/styles/focus = SubResource("StyleBoxEmpty_e3b2v")
+Button/styles/hover = SubResource("StyleBoxTexture_702lb")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_royqy")
+Button/styles/normal = SubResource("StyleBoxTexture_ljhvi")
+Button/styles/pressed = SubResource("StyleBoxTexture_mcth7")

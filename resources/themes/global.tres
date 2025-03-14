@@ -1,6 +1,10 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d120p7yico7r8"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://d120p7yico7r8"]
 
 [ext_resource type="FontFile" uid="uid://cyhfhfqcs8g0s" path="res://assets/fonts/Kenney Future.ttf" id="1_rb4rf"]
+[ext_resource type="Texture2D" uid="uid://d1e20mxvphhx" path="res://assets/images/kenney_ui-pack/Vector/Grey/button_rectangle_flat.svg" id="2_7o25s"]
+[ext_resource type="Texture2D" uid="uid://dhhads5ns2de0" path="res://assets/images/kenney_ui-pack/Vector/Grey/arrow_decorative_s_small.svg" id="2_dyisv"]
+[ext_resource type="Texture2D" uid="uid://bojfgvfj2wl47" path="res://assets/images/kenney_ui-pack/Vector/Grey/check_round_round_circle.svg" id="4_5tkca"]
+[ext_resource type="Texture2D" uid="uid://bmb36345xrthu" path="res://assets/images/kenney_ui-pack/Vector/Grey/check_round_grey_circle.svg" id="5_j5heg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7o25s"]
 
@@ -12,6 +16,53 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hshku"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dyisv"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_7o25s")
+texture_margin_left = 6.22419
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 5.74541
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hshku"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_7o25s")
+texture_margin_left = 6.22419
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 5.74541
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tkca"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_7o25s")
+texture_margin_left = 6.22419
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 5.74541
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5heg"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_7o25s")
+texture_margin_left = 6.22419
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 5.74541
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dkwn6"]
+texture = ExtResource("2_7o25s")
+texture_margin_left = 6.22419
+texture_margin_top = 5.02723
+texture_margin_right = 5.50602
+texture_margin_bottom = 5.74541
+
 [resource]
 Button/colors/font_color = Color(0.921569, 0.423529, 0.423529, 0.541176)
 Button/colors/font_focus_color = Color(0.728173, 0.127959, 0.30909, 1)
@@ -20,8 +71,10 @@ Button/colors/font_hover_pressed_color = Color(0.921569, 0.423529, 0.423529, 0.5
 Button/colors/font_outline_color = Color(0.501961, 0.501961, 0.501961, 1)
 Button/colors/font_pressed_color = Color(0.921569, 0.423529, 0.423529, 0.541176)
 Button/colors/icon_disabled_color = Color(0.329412, 0.301961, 0.321569, 0.4)
-Button/constants/icon_max_width = 24
-Button/constants/outline_size = 5
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 10
 Button/font_sizes/font_size = 64
 Button/fonts/font = ExtResource("1_rb4rf")
 Button/styles/disabled = SubResource("StyleBoxEmpty_7o25s")
@@ -35,5 +88,28 @@ Label/constants/outline_size = 6
 Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 2
-Label/font_sizes/font_size = 64
+Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_rb4rf")
+OptionButton/colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
+OptionButton/colors/font_focus_color = Color(0.501961, 0.501961, 0.501961, 1)
+OptionButton/colors/font_hover_color = Color(0.501961, 0.501961, 0.501961, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.501961, 0.501961, 0.501961, 1)
+OptionButton/colors/font_outline_color = Color(0, 0, 0, 0.00784314)
+OptionButton/colors/font_pressed_color = Color(0.501961, 0.501961, 0.501961, 1)
+OptionButton/constants/arrow_margin = 16
+OptionButton/font_sizes/font_size = 18
+OptionButton/icons/arrow = ExtResource("2_dyisv")
+OptionButton/styles/focus = SubResource("StyleBoxTexture_dyisv")
+OptionButton/styles/hover = SubResource("StyleBoxTexture_hshku")
+OptionButton/styles/normal = SubResource("StyleBoxTexture_5tkca")
+OptionButton/styles/pressed = SubResource("StyleBoxTexture_j5heg")
+PopupMenu/colors/font_color = Color(0.501961, 0.501961, 0.501961, 1)
+PopupMenu/constants/h_separation = 10
+PopupMenu/constants/item_end_padding = 10
+PopupMenu/constants/item_start_padding = 10
+PopupMenu/constants/v_separation = 8
+PopupMenu/font_sizes/font_size = 20
+PopupMenu/font_sizes/title_font_size = 24
+PopupMenu/icons/radio_checked = ExtResource("4_5tkca")
+PopupMenu/icons/radio_unchecked = ExtResource("5_j5heg")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_dkwn6")

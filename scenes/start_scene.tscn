@@ -1,12 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cno8k56lsoxmv"]
+[gd_scene load_steps=9 format=3 uid="uid://cno8k56lsoxmv"]
 
+[ext_resource type="Script" uid="uid://0407tkruj7qv" path="res://scenes/start_scene.gd" id="1_2525w"]
 [ext_resource type="Texture2D" uid="uid://b4oqct0labn0i" path="res://assets/images/Sample.png" id="1_cokmr"]
+[ext_resource type="PackedScene" uid="uid://4p60slxb4t86" path="res://controls/customs/game_button.tscn" id="2_3tgnh"]
+[ext_resource type="Texture2D" uid="uid://cjwauslosg52h" path="res://assets/images/kenney_ui-pack/Vector/Green/button_square_border.svg" id="3_i331m"]
+[ext_resource type="Texture2D" uid="uid://45bykeq7y2r4" path="res://assets/images/kenney_ui-pack/Vector/Green/button_square_flat.svg" id="4_0kdh5"]
+[ext_resource type="Theme" uid="uid://cur0wlwtwwe6" path="res://resources/themes/grey_button.tres" id="4_sg87u"]
+[ext_resource type="Texture2D" uid="uid://c1qyvxlome3x" path="res://assets/images/kenney_ui-pack/Vector/Green/check_square_grey_cross.svg" id="5_0kdh5"]
+[ext_resource type="Theme" uid="uid://doft4ah2mik0u" path="res://resources/themes/green_button.tres" id="5_2l3yw"]
 
 [node name="StartScene" type="Node2D"]
+script = ExtResource("1_2525w")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="HUD"]
+[node name="Titled" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Titled"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,7 +31,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_cokmr")
 
-[node name="Title" type="Label" parent="HUD"]
+[node name="Title" type="Label" parent="HUD/Titled"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,7 +51,8 @@ theme_override_font_sizes/font_size = 102
 text = "PIRATE:
 DEAD SHOOT"
 
-[node name="Menu" type="VBoxContainer" parent="HUD"]
+[node name="Menu" type="VBoxContainer" parent="HUD/Titled"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -44,35 +63,240 @@ offset_top = -272.0
 offset_right = 270.0
 grow_horizontal = 2
 grow_vertical = 0
-focus_next = NodePath("../Quit")
 
-[node name="Solo" type="Button" parent="HUD/Menu"]
+[node name="Solo" parent="HUD/Titled/Menu" instance=ExtResource("2_3tgnh")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../../Quit")
 focus_neighbor_bottom = NodePath("../Multi")
 text = "solo play"
 
-[node name="Multi" type="Button" parent="HUD/Menu"]
+[node name="Multi" parent="HUD/Titled/Menu" instance=ExtResource("2_3tgnh")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Solo")
 focus_neighbor_bottom = NodePath("../Setting")
 text = "mult play"
 
-[node name="Setting" type="Button" parent="HUD/Menu"]
+[node name="Setting" parent="HUD/Titled/Menu" instance=ExtResource("2_3tgnh")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Multi")
 focus_neighbor_bottom = NodePath("../../Quit")
 text = "settings"
 
-[node name="Quit" type="Button" parent="HUD"]
+[node name="Quit" parent="HUD/Titled" instance=ExtResource("2_3tgnh")]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -213.0
-offset_top = 26.0
-offset_right = -32.0
-offset_bottom = 98.0
+offset_left = -204.0
+offset_top = 19.0
+offset_right = -23.0
+offset_bottom = 91.0
 grow_horizontal = 0
 focus_neighbor_top = NodePath("../Menu/Setting")
 focus_neighbor_bottom = NodePath("../Menu/Solo")
-text = "quit"
+text = "QUIT"
+
+[node name="SoloOption" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/SoloOption"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.219608, 0.219608, 0.219608, 0.843137)
+
+[node name="Option" type="Control" parent="HUD/SoloOption"]
+custom_minimum_size = Vector2(483, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.5
+offset_top = -240.0
+offset_right = 241.5
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="NinePatchRect" parent="HUD/SoloOption/Option"]
+custom_minimum_size = Vector2(0, 86)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_i331m")
+region_rect = Rect2(0, 0.162224, 64, 63.8378)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="cancel" parent="HUD/SoloOption/Option/Panel2" instance=ExtResource("2_3tgnh")]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 23.0
+offset_right = 208.0
+offset_bottom = 70.0
+theme = ExtResource("4_sg87u")
+text = "cancel"
+
+[node name="ok" parent="HUD/SoloOption/Option/Panel2" instance=ExtResource("2_3tgnh")]
+layout_mode = 1
+offset_left = 283.5
+offset_top = 22.0
+offset_right = 447.5
+offset_bottom = 69.0
+theme = ExtResource("5_2l3yw")
+text = "ok"
+
+[node name="Panel1" type="NinePatchRect" parent="HUD/SoloOption/Option"]
+custom_minimum_size = Vector2(483, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.5
+offset_top = -240.0
+offset_right = 241.5
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0kdh5")
+region_rect = Rect2(0, 0.162224, 64, 63.8378)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 4
+
+[node name="tit" type="Label" parent="HUD/SoloOption/Option/Panel1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.0
+offset_top = 59.5
+offset_right = 132.0
+offset_bottom = 95.5
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "play option"
+
+[node name="items" type="VBoxContainer" parent="HUD/SoloOption/Option/Panel1"]
+custom_minimum_size = Vector2(319, 72)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -216.5
+offset_right = 163.0
+offset_bottom = -44.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="itemlevel" type="HBoxContainer" parent="HUD/SoloOption/Option/Panel1/items"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/SoloOption/Option/Panel1/items/itemlevel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "level"
+
+[node name="level" type="OptionButton" parent="HUD/SoloOption/Option/Panel1/items/itemlevel"]
+custom_minimum_size = Vector2(181, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+selected = 2
+item_count = 3
+popup/item_0/text = "easy"
+popup/item_0/id = 0
+popup/item_1/text = "normal"
+popup/item_1/id = 1
+popup/item_2/text = "difficult"
+popup/item_2/id = 2
+
+[node name="itemlevel2" type="HBoxContainer" parent="HUD/SoloOption/Option/Panel1/items"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/SoloOption/Option/Panel1/items/itemlevel2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "enemy"
+
+[node name="level" type="OptionButton" parent="HUD/SoloOption/Option/Panel1/items/itemlevel2"]
+custom_minimum_size = Vector2(181, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+selected = 0
+item_count = 4
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+popup/item_3/text = "4"
+popup/item_3/id = 3
+
+[node name="itemlevel3" type="HBoxContainer" parent="HUD/SoloOption/Option/Panel1/items"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/SoloOption/Option/Panel1/items/itemlevel3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "gift"
+
+[node name="level" type="OptionButton" parent="HUD/SoloOption/Option/Panel1/items/itemlevel3"]
+custom_minimum_size = Vector2(181, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+selected = 0
+item_count = 3
+popup/item_0/text = "shoot"
+popup/item_0/id = 0
+popup/item_1/text = "heal"
+popup/item_1/id = 1
+popup/item_2/text = "lucky"
+popup/item_2/id = 2
+
+[node name="SoloClose" parent="HUD/SoloOption/Option" instance=ExtResource("2_3tgnh")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.5
+offset_top = -23.0
+offset_right = 18.5
+offset_bottom = 32.0
+grow_horizontal = 0
+rotation = 0.197222
+icon = ExtResource("5_0kdh5")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="HUD/Titled/Menu/Solo" to="." method="_on_solo_pressed"]
+[connection signal="pressed" from="HUD/Titled/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HUD/SoloOption/Option/SoloClose" to="." method="_on_solo_close_pressed"]
