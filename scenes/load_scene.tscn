@@ -1,0 +1,195 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3cj368dlvwxh"]
+
+[ext_resource type="Script" uid="uid://bnqpgilyksvdo" path="res://scenes/load_scene.gd" id="1_qkot4"]
+[ext_resource type="Texture2D" uid="uid://bxf61mmt54pgu" path="res://assets/images/shipsMiscellaneous_vector.svg" id="2_aaim2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fjlr"]
+atlas = ExtResource("2_aaim2")
+region = Rect2(227, 43, 66, 113)
+
+[sub_resource type="Animation" id="Animation_4fjlr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/ColorRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 450)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_aaim2"]
+resource_name = "close_loader"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1617, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/ColorRect2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 450), Vector2(1616, 450)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4fjlr"]
+_data = {
+&"RESET": SubResource("Animation_4fjlr"),
+&"close_loader": SubResource("Animation_aaim2")
+}
+
+[node name="load_scene" type="Node2D"]
+script = ExtResource("1_qkot4")
+
+[node name="TargetNode" type="Node2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 450.0
+grow_horizontal = 2
+color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[node name="Tit" type="Label" parent="HUD/ColorRect"]
+layout_mode = 1
+offset_left = 101.0
+offset_top = 81.0
+offset_right = 181.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 40
+text = "tip"
+
+[node name="Icon" type="TextureRect" parent="HUD/ColorRect"]
+layout_mode = 1
+offset_left = 116.0
+offset_top = 165.0
+offset_right = 182.0
+offset_bottom = 278.0
+texture = SubResource("AtlasTexture_4fjlr")
+
+[node name="Label" type="Label" parent="HUD/ColorRect"]
+layout_mode = 1
+offset_left = 227.0
+offset_top = 165.0
+offset_right = 700.0
+offset_bottom = 246.0
+theme_override_font_sizes/font_size = 36
+text = "单人游戏时、不同阵营的船会有不同的颜色。"
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_4fjlr")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="HUD"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -450.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD/ColorRect2"]
+custom_minimum_size = Vector2(1400, 44)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 81.0
+offset_top = -76.0
+offset_right = -119.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false
+
+[node name="loadtext" type="Label" parent="HUD/ColorRect2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -123.0
+offset_right = 298.0
+offset_bottom = -87.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "loading..."
+
+[node name="loadper" type="Label" parent="HUD/ColorRect2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -334.0
+offset_top = -123.0
+offset_right = -132.0
+offset_bottom = -87.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0%"
+horizontal_alignment = 2
