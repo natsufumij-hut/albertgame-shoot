@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d111n5p1ejy2c"]
+
+[node name="SoloGameScene" type="Node2D"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 198.0
+offset_bottom = 44.0
+text = "solo game."

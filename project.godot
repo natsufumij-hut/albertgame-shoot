@@ -17,6 +17,10 @@ config/name_localized={
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://d3unr1wr7v4bl"
 
+[autoload]
+
+SceneHolder="*res://autoloads/scene_holder.gd"
+
 [display]
 
 window/size/viewport_width=1600

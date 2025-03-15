@@ -2,6 +2,7 @@ extends Node2D
 
 var loader
 var progress: Array
+
 @export var scene_path: String = ""  # 替换为你要加载的场景路径
 @onready var target_node: Node2D = $TargetNode
 @onready var animation_player: AnimationPlayer = $HUD/AnimationPlayer
@@ -10,6 +11,8 @@ var progress: Array
 @onready var loadtext: Label = $HUD/ColorRect2/loadtext
 
 func _ready():
+	if SceneHolder.scene_target_path:
+		scene_path = SceneHolder.scene_target_path
 	# 开始异步加载场景
 	if scene_path:
 		loader = ResourceLoader.load_threaded_request(scene_path)
