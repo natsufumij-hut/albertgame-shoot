@@ -10,12 +10,16 @@ config_version=5
 
 [application]
 
-config/name="dead-shoot"
+config/name="PIRATE: DEAD-SHOOT"
 config/name_localized={
 "zh_CN": "海盗: 致命射击"
 }
+run/main_scene="uid://cno8k56lsoxmv"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/fullsize=false
+boot_splash/image="uid://b2nf1dw3bte04"
 config/icon="uid://d3unr1wr7v4bl"
+boot_splash/minimum_display_time=1500
 
 [autoload]
 
