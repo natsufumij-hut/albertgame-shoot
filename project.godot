@@ -52,3 +52,11 @@ ui_cancel={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="地形碰撞"
+2d_physics/layer_2="玩家"
+2d_physics/layer_3="道具"
+2d_physics/layer_4="攻击区域"
+2d_physics/layer_5="触发器"

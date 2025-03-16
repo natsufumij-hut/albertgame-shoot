@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhne35xhayfrh"]
+
+[ext_resource type="Script" uid="uid://4aog4br1linp" path="res://entities/player.gd" id="1_b0kkn"]
+[ext_resource type="Texture2D" uid="uid://bxf61mmt54pgu" path="res://assets/images/shipsMiscellaneous_vector.svg" id="1_merdl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_merdl"]
+radius = 16.0
+height = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0kkn"]
+size = Vector2(53, 31)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_b0kkn")
+
+[node name="graphics" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="graphics"]
+texture = ExtResource("1_merdl")
+region_enabled = true
+region_rect = Rect2(640, 48, 40, 108)
+
+[node name="Flag4" type="Sprite2D" parent="graphics"]
+position = Vector2(-15, 7)
+rotation = 0.570548
+scale = Vector2(2.16667, 1.13636)
+texture = ExtResource("1_merdl")
+region_enabled = true
+region_rect = Rect2(737, 313, 6, 22)
+
+[node name="Flag5" type="Sprite2D" parent="graphics"]
+position = Vector2(17, 7)
+rotation = -0.598345
+scale = Vector2(2.16667, 1.13636)
+texture = ExtResource("1_merdl")
+region_enabled = true
+region_rect = Rect2(737, 313, 6, 22)
+
+[node name="Flag" type="Sprite2D" parent="graphics"]
+position = Vector2(2, -10)
+texture = ExtResource("1_merdl")
+region_enabled = true
+region_rect = Rect2(707, 347, 66, 46)
+
+[node name="Flag2" type="Sprite2D" parent="graphics"]
+position = Vector2(0, -38)
+texture = ExtResource("1_merdl")
+region_enabled = true
+region_rect = Rect2(1010, 97, 20, 18)
+
+[node name="Flag3" type="Sprite2D" parent="graphics"]
+position = Vector2(0, -50)
+texture = ExtResource("1_merdl")
+region_enabled = true
+region_rect = Rect2(737, 313, 6, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_merdl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -14.5)
+shape = SubResource("RectangleShape2D_b0kkn")
