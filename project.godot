@@ -56,7 +56,7 @@ ui_cancel={
 [layer_names]
 
 2d_physics/layer_1="地形碰撞"
-2d_physics/layer_2="玩家"
+2d_physics/layer_2="玩家船"
 2d_physics/layer_3="道具"
 2d_physics/layer_4="攻击区域"
 2d_physics/layer_5="触发器"
