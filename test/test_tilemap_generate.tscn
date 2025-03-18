@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0iok7tap3kwe"]
+
+[ext_resource type="Script" uid="uid://2mn5uu3vqixw" path="res://test/test_tilemap_generate.gd" id="1_wjqo4"]
+[ext_resource type="TileSet" uid="uid://v7gjf5bh8gaj" path="res://test/sea_tile.tres" id="2_u50nu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u50nu"]
+noise_type = 3
+frequency = 0.025
+fractal_octaves = 8
+fractal_gain = 0.4
+
+[node name="TestTilemapGenerate" type="Node2D"]
+script = ExtResource("1_wjqo4")
+tile_set = ExtResource("2_u50nu")
+noise = SubResource("FastNoiseLite_u50nu")
+
+[node name="MapLayers" type="Node2D" parent="."]
+scale = Vector2(0.1, 0.1)
