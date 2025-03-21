@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhne35xhayfrh"]
+[gd_scene load_steps=17 format=3 uid="uid://docjuhf3wsm86"]
 
-[ext_resource type="Script" uid="uid://4aog4br1linp" path="res://entities/player.gd" id="1_b0kkn"]
-[ext_resource type="Texture2D" uid="uid://bxf61mmt54pgu" path="res://assets/images/shipsMiscellaneous_vector.svg" id="1_merdl"]
+[ext_resource type="Script" uid="uid://dehgbnnfwdpx1" path="res://entities/enemy.gd" id="1_pqhw6"]
+[ext_resource type="Texture2D" uid="uid://bxf61mmt54pgu" path="res://assets/images/shipsMiscellaneous_vector.svg" id="2_b4nis"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_merdl"]
-radius = 14.0
+radius = 16.0
 height = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0kkn"]
@@ -208,24 +208,24 @@ _data = {
 &"explosion": SubResource("Animation_b0kkn")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b0kkn"]
-atlas = ExtResource("1_merdl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqhw6"]
+atlas = ExtResource("2_b4nis")
 region = Rect2(982, 100, 10, 10)
 
-[sub_resource type="Gradient" id="Gradient_e4p34"]
+[sub_resource type="Gradient" id="Gradient_b4nis"]
 colors = PackedColorArray(0.690196, 0.8, 0, 1, 1, 0.172549, 0.254902, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_b0kkn"]
-gradient = SubResource("Gradient_e4p34")
+gradient = SubResource("Gradient_b4nis")
 
-[sub_resource type="Curve" id="Curve_rfe5m"]
+[sub_resource type="Curve" id="Curve_uvc0s"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.971831, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_e4p34"]
-curve = SubResource("Curve_rfe5m")
+curve = SubResource("Curve_uvc0s")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qly61"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pqhw6"]
 particle_flag_disable_z = true
 spread = 180.0
 initial_velocity_min = 30.0
@@ -238,18 +238,24 @@ scale_max = 2.0
 scale_curve = SubResource("CurveTexture_e4p34")
 color_ramp = SubResource("GradientTexture1D_b0kkn")
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pqhw6"]
+load_path = "res://.godot/imported/shipsMiscellaneous_vector.svg-9d6b2b4a26d277b1d166695b11e1732e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b4nis"]
+load_path = "res://.godot/imported/shipsMiscellaneous_vector.svg-9d6b2b4a26d277b1d166695b11e1732e.ctex"
+
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 61
 motion_mode = 1
-script = ExtResource("1_b0kkn")
+script = ExtResource("1_pqhw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -24)
-texture = ExtResource("1_merdl")
-vframes = 4
+position = Vector2(0, -22)
+texture = ExtResource("2_b4nis")
+vframes = 3
 region_enabled = true
-region_rect = Rect2(137, -3.12567, 66, 639.126)
+region_rect = Rect2(227, -3.126, 66, 479.126)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_merdl")
@@ -269,20 +275,20 @@ libraries = {
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 40
-texture = SubResource("AtlasTexture_b0kkn")
+texture = SubResource("AtlasTexture_pqhw6")
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_qly61")
+process_material = SubResource("ParticleProcessMaterial_pqhw6")
 
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-8, 1)
-texture = ExtResource("1_merdl")
+texture = SubResource("CompressedTexture2D_pqhw6")
 region_enabled = true
 region_rect = Rect2(1174, 279, 18, 39)
 
 [node name="Explosion2" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(11, -15)
-texture = ExtResource("1_merdl")
+texture = SubResource("CompressedTexture2D_b4nis")
 region_enabled = true
 region_rect = Rect2(1204, 291, 11, 27)

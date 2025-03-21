@@ -1,8 +1,23 @@
+class_name Player
 extends CharacterBody2D
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var marker_2d: Marker2D = $Marker2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 const SPEED = 300.0
 
+signal shoot_bullet(source_id: String, pos: Vector2, dir: Vector2)
+
+@export var player_id = "player1"
+@export var hp_max:int = 10
+@export var hp:int = 10:
+	set(value):
+		hp = value
+		if value<=0:
+			died()
+		else:
+			update_flag()
 
 func _physics_process(delta: float) -> void:
 
@@ -23,3 +38,25 @@ func _physics_process(delta: float) -> void:
 		var angle = dir.angle()+PI/2
 		self.rotation = angle	
 	move_and_slide()
+
+	check_inputs()
+
+func check_inputs():
+	if Input.is_action_just_pressed("shoot"):
+		var angle = self.rotation+PI/2
+		var dir = Vector2(cos(angle),sin(angle))
+		var pos = marker_2d.global_position
+		shoot_bullet.emit(player_id,pos,dir)
+
+func died():
+	animation_player.play("explosion")
+
+func got_attacked():
+	animation_player.play("attacked")
+	hp -= 1
+
+func update_flag():
+	var per = hp * 1.0 / hp_max
+	var now_frame = 1 - (sprite_2d.frame * 1.0 / sprite_2d.vframes)
+	if per< now_frame and (sprite_2d.frame<sprite_2d.vframes-1):
+		sprite_2d.frame += 1

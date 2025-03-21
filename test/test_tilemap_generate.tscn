@@ -5,9 +5,8 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_u50nu"]
 noise_type = 3
-frequency = 0.025
-fractal_octaves = 8
-fractal_gain = 0.4
+frequency = 0.0192
+fractal_octaves = 4
 
 [node name="TestTilemapGenerate" type="Node2D"]
 script = ExtResource("1_wjqo4")
