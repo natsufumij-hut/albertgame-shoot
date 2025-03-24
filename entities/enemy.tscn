@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://docjuhf3wsm86"]
+[gd_scene load_steps=18 format=3 uid="uid://docjuhf3wsm86"]
 
 [ext_resource type="Script" uid="uid://dehgbnnfwdpx1" path="res://entities/enemy.gd" id="1_pqhw6"]
 [ext_resource type="Texture2D" uid="uid://bxf61mmt54pgu" path="res://assets/images/shipsMiscellaneous_vector.svg" id="2_b4nis"]
@@ -9,35 +9,6 @@ height = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0kkn"]
 size = Vector2(53, 31)
-
-[sub_resource type="Animation" id="Animation_b0kkn"]
-resource_name = "explosion"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_e4p34"]
 length = 0.001
@@ -125,6 +96,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="Animation" id="Animation_rfe5m"]
 resource_name = "attacked"
@@ -201,42 +184,103 @@ tracks/5/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_b4nis"]
+resource_name = "explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pqhw6"]
+resource_name = "shoot"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.2, 0.2), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfe5m"]
 _data = {
 &"RESET": SubResource("Animation_e4p34"),
 &"attacked": SubResource("Animation_rfe5m"),
-&"explosion": SubResource("Animation_b0kkn")
+&"explosion": SubResource("Animation_b4nis"),
+&"shoot": SubResource("Animation_pqhw6")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqhw6"]
 atlas = ExtResource("2_b4nis")
 region = Rect2(982, 100, 10, 10)
 
-[sub_resource type="Gradient" id="Gradient_b4nis"]
+[sub_resource type="Gradient" id="Gradient_e4p34"]
 colors = PackedColorArray(0.690196, 0.8, 0, 1, 1, 0.172549, 0.254902, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_b0kkn"]
-gradient = SubResource("Gradient_b4nis")
+gradient = SubResource("Gradient_e4p34")
 
-[sub_resource type="Curve" id="Curve_uvc0s"]
+[sub_resource type="Curve" id="Curve_rfe5m"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.971831, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_e4p34"]
-curve = SubResource("Curve_uvc0s")
+curve = SubResource("Curve_rfe5m")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pqhw6"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 30.0
-initial_velocity_max = 75.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 damping_min = 30.0
 damping_max = 30.0
-scale_min = 2.0
-scale_max = 2.0
+scale_min = 3.0
+scale_max = 5.0
 scale_curve = SubResource("CurveTexture_e4p34")
 color_ramp = SubResource("GradientTexture1D_b0kkn")
+turbulence_enabled = true
+turbulence_noise_strength = 6.0
+turbulence_noise_scale = 2.333
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pqhw6"]
 load_path = "res://.godot/imported/shipsMiscellaneous_vector.svg-9d6b2b4a26d277b1d166695b11e1732e.ctex"
@@ -265,7 +309,7 @@ position = Vector2(1.5, -14.5)
 shape = SubResource("RectangleShape2D_b0kkn")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 59)
+position = Vector2(0, 68)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -274,7 +318,7 @@ libraries = {
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 40
+amount = 70
 texture = SubResource("AtlasTexture_pqhw6")
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_pqhw6")
@@ -292,3 +336,10 @@ position = Vector2(11, -15)
 texture = SubResource("CompressedTexture2D_b4nis")
 region_enabled = true
 region_rect = Rect2(1204, 291, 11, 27)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 67)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_b4nis")
+region_enabled = true
+region_rect = Rect2(1179, 48, 42, 42)
