@@ -5,7 +5,7 @@ var progress: Array
 
 @export var scene_path: String = ""  # 替换为你要加载的场景路径
 @onready var target_node: Node2D = $TargetNode
-@onready var animation_player: AnimationPlayer = $HUD/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var progress_bar: ProgressBar = $HUD/ColorRect2/ProgressBar
 @onready var loadper: Label = $HUD/ColorRect2/loadper
 @onready var loadtext: Label = $HUD/ColorRect2/loadtext

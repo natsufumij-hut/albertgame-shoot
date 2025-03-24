@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cno8k56lsoxmv"]
+[gd_scene load_steps=12 format=3 uid="uid://cno8k56lsoxmv"]
 
 [ext_resource type="Script" uid="uid://0407tkruj7qv" path="res://scenes/start_scene.gd" id="1_2525w"]
 [ext_resource type="Texture2D" uid="uid://b4oqct0labn0i" path="res://assets/images/Sample.png" id="1_cokmr"]
@@ -8,6 +8,14 @@
 [ext_resource type="Theme" uid="uid://cur0wlwtwwe6" path="res://resources/themes/grey_button.tres" id="4_sg87u"]
 [ext_resource type="Texture2D" uid="uid://c1qyvxlome3x" path="res://assets/images/kenney_ui-pack/Vector/Green/check_square_grey_cross.svg" id="5_0kdh5"]
 [ext_resource type="Theme" uid="uid://doft4ah2mik0u" path="res://resources/themes/green_button.tres" id="5_2l3yw"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_2525w"]
+
+[sub_resource type="Shortcut" id="Shortcut_6vkx6"]
+events = [SubResource("InputEventJoypadButton_2525w")]
+
+[sub_resource type="Shortcut" id="Shortcut_u6lbi"]
+events = [SubResource("InputEventJoypadButton_2525w")]
 
 [node name="StartScene" type="Node2D"]
 script = ExtResource("1_2525w")
@@ -29,6 +37,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Menu/Solo")
+focus_mode = 2
 texture = ExtResource("1_cokmr")
 
 [node name="Title" type="Label" parent="HUD/Titled"]
@@ -147,12 +158,13 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="cancel" parent="HUD/SoloOption/Option/Panel2" instance=ExtResource("2_3tgnh")]
-layout_mode = 0
+layout_mode = 1
 offset_left = 44.0
 offset_top = 23.0
 offset_right = 208.0
 offset_bottom = 70.0
 theme = ExtResource("4_sg87u")
+shortcut = SubResource("Shortcut_6vkx6")
 text = "cancel"
 
 [node name="ok" parent="HUD/SoloOption/Option/Panel2" instance=ExtResource("2_3tgnh")]
@@ -162,6 +174,7 @@ offset_top = 22.0
 offset_right = 447.5
 offset_bottom = 69.0
 theme = ExtResource("5_2l3yw")
+shortcut = SubResource("Shortcut_u6lbi")
 text = "ok"
 
 [node name="Panel1" type="NinePatchRect" parent="HUD/SoloOption/Option"]
