@@ -24,6 +24,8 @@ boot_splash/minimum_display_time=1500
 [autoload]
 
 SceneHolder="*res://autoloads/scene_holder.gd"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [display]
 
@@ -31,6 +33,10 @@ window/size/viewport_width=1600
 window/size/viewport_height=900
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
 
 [global_group]
 

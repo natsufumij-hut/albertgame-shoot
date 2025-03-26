@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 const SPEED = 300.0
 
@@ -49,11 +50,16 @@ func reset_hp():
 	bullet_num = bullet_max
 	
 func _physics_process(_delta: float) -> void:
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_hor := Input.get_axis("ui_left", "ui_right")
 	var direction_ver := Input.get_axis("ui_up", "ui_down")	
+	if !navigation_agent_2d.is_navigation_finished():
+		var next_point = navigation_agent_2d.get_next_path_position()
+		var dir = (next_point - global_position).normalized()
+		direction_hor = dir.x
+		direction_ver = dir.y
+
 	if direction_hor:
 		velocity.x = direction_hor * SPEED
 	else:
@@ -73,6 +79,9 @@ func _physics_process(_delta: float) -> void:
 func check_inputs():
 	if Input.is_action_just_pressed("shoot"):
 		shoot_one()
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		navigation_agent_2d.target_position = get_global_mouse_position()
 
 func shoot_one():
 	if bullet_num>0:

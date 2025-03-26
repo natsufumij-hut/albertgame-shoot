@@ -349,3 +349,5 @@ scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("1_merdl")
 region_enabled = true
 region_rect = Rect2(1179, 48, 42, 42)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
