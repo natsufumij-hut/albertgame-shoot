@@ -5,6 +5,7 @@ const bullet = preload("res://entities/bullet.tscn")
 @onready var life_hp: Label = $HUD/Status/Life/Label
 @onready var score_label: Label = $HUD/Status/Score/Label
 @onready var bullet_label: Label = $HUD/Status/Shoot/Label
+@onready var planet: TileMapLayer = $Planet
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +21,6 @@ func _on_player_shoot_bullet(source_id: String, pos: Vector2, dir: Vector2) -> v
 	bullet_ins.source_id = source_id
 	bullet_ins.position = pos
 	bullets.add_child(bullet_ins)
-	
 
 
 func _on_player_updat_hp(hp: int, hp_max: int) -> void:

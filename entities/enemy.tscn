@@ -1,7 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://docjuhf3wsm86"]
+[gd_scene load_steps=26 format=3 uid="uid://docjuhf3wsm86"]
 
 [ext_resource type="Script" uid="uid://dehgbnnfwdpx1" path="res://entities/enemy.gd" id="1_pqhw6"]
 [ext_resource type="Texture2D" uid="uid://bxf61mmt54pgu" path="res://assets/images/shipsMiscellaneous_vector.svg" id="2_b4nis"]
+[ext_resource type="Script" uid="uid://dgv52dwsm0vt7" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_jq0pf"]
+[ext_resource type="Script" uid="uid://bg1hk6lgydwk0" path="res://addons/beehave/nodes/composites/selector.gd" id="4_68dbu"]
+[ext_resource type="Script" uid="uid://dhxjt3xpwd2mc" path="res://addons/beehave/nodes/composites/sequence.gd" id="5_f71c5"]
+[ext_resource type="Script" uid="uid://cp3anuhi1p3kq" path="res://entities/conditions/enemy_has_target.gd" id="6_adrne"]
+[ext_resource type="Script" uid="uid://3ss5ny6hwh3m" path="res://entities/actions/normal_action.gd" id="7_jq0pf"]
+[ext_resource type="Script" uid="uid://dhjcyjgw16afd" path="res://entities/actions/escape_action.gd" id="8_68dbu"]
+[ext_resource type="Script" uid="uid://c0lgma8hbufs0" path="res://entities/conditions/enemy_has_no_target.gd" id="8_f71c5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_merdl"]
 radius = 16.0
@@ -288,6 +295,9 @@ load_path = "res://.godot/imported/shipsMiscellaneous_vector.svg-9d6b2b4a26d277b
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b4nis"]
 load_path = "res://.godot/imported/shipsMiscellaneous_vector.svg-9d6b2b4a26d277b1d166695b11e1732e.ctex"
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pqhw6"]
+radius = 281.455
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 61
@@ -346,3 +356,48 @@ region_rect = Rect2(1179, 48, 42, 42)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 navigation_layers = 0
+
+[node name="SensorRange" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SensorRange"]
+shape = SubResource("CircleShape2D_pqhw6")
+
+[node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("3_jq0pf")
+actor_node_path = NodePath("..")
+blackboard = NodePath("@Node@52809")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://dgv52dwsm0vt7"
+
+[node name="SelectorComposite" type="Node" parent="BeehaveTree"]
+script = ExtResource("4_68dbu")
+metadata/_custom_type_script = "uid://bg1hk6lgydwk0"
+
+[node name="NormalSequence" type="Node" parent="BeehaveTree/SelectorComposite"]
+script = ExtResource("5_f71c5")
+metadata/_custom_type_script = "uid://dhxjt3xpwd2mc"
+
+[node name="ConditionLeaf" type="Node" parent="BeehaveTree/SelectorComposite/NormalSequence"]
+script = ExtResource("6_adrne")
+metadata/_custom_type_script = "uid://b5h7miubrnddn"
+
+[node name="ActionLeaf" type="Node" parent="BeehaveTree/SelectorComposite/NormalSequence"]
+script = ExtResource("7_jq0pf")
+metadata/_custom_type_script = "uid://em4k8qvw5kbn"
+
+[node name="EscapeSequence" type="Node" parent="BeehaveTree/SelectorComposite"]
+script = ExtResource("5_f71c5")
+metadata/_custom_type_script = "uid://dhxjt3xpwd2mc"
+
+[node name="ConditionLeaf" type="Node" parent="BeehaveTree/SelectorComposite/EscapeSequence"]
+script = ExtResource("8_f71c5")
+metadata/_custom_type_script = "uid://b5h7miubrnddn"
+
+[node name="ActionLeaf" type="Node" parent="BeehaveTree/SelectorComposite/EscapeSequence"]
+script = ExtResource("8_68dbu")
+metadata/_custom_type_script = "uid://em4k8qvw5kbn"
+
+[connection signal="body_entered" from="SensorRange" to="." method="_on_sensor_range_body_entered"]
+[connection signal="body_exited" from="SensorRange" to="." method="_on_sensor_range_body_exited"]
